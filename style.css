@@ -480,3 +480,57 @@ main {
 button, .link-item, .social-btn {
   min-height: 44px;   /* Apple’s recommended touch size */
 }
+/* ─── Treat phone‑landscape as desktop ───────────────────────────────────────── */
+@media only screen 
+  and (orientation: landscape) 
+  and (max-width: 1024px) /* adjust this if you need a different cutoff */
+{
+  /* 1) Header/nav back to desktop */
+  .site-header .container {
+    flex-direction: row;
+  }
+  .nav-toggle {
+    display: none;         /* hide the hamburger */
+  }
+  .site-nav {
+    position: static !important;
+    transform: none !important;
+    width: auto !important;
+    padding: 0 !important;
+  }
+  .site-nav ul {
+    flex-direction: row !important;
+    gap: var(--gap);
+  }
+
+  /* 2) About page: photo + text side‑by‑side */
+  .about {
+    flex-direction: row;
+    text-align: left;
+  }
+  .photo {
+    width: 180px;           /* your desktop width */
+    margin: 0;
+  }
+  .paragraph {
+    min-width: 300px;       /* restore your desktop min */
+    margin-left: 1.5rem;
+  }
+
+  /* 3) FoodKing & Projects pages: side‑by‑side cards */
+  .image-wrapper {
+    flex-direction: row !important;
+    gap: 2rem;
+  }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  /* 4) Main panels full width */
+  main, .image-page, .projects-page {
+    padding: 2rem var(--spacing);
+  }
+}
+
