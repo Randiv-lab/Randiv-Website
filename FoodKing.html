@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FoodKing – Project Details</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .image-page {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .image-page h1 {
+            margin-bottom: 2rem;
+        }
+
+        /* IMPORTANT: rename video-wrapper → image-wrapper */
+        .image-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* On desktop, two across */
+        @media (min-width: 768px) {
+            .image-wrapper {
+                flex-direction: row;
+            }
+        }
+
+        .image-card {
+            position: relative;
+            /* allow absolute‐positioned icon */
+            flex: 1;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            height: 15rem;
+
+
+            width: 100%;
+
+        }
+
+        .image-card h3 {
+            margin: 0;
+            padding: 0.75rem;
+            background: #fff;
+            font-size: 1.1rem;
+        }
+
+        .image-card img {
+            display: block;
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+            height: 8rem;
+
+
+        }
+
+        .fullscreen-icon {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background: rgba(0, 0, 0, 0.6);
+            border: none;
+            border-radius: 50%;
+            padding: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fullscreen-icon i,
+        .fullscreen-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: #fff;
+            /* make icon white */
+        }
+
+        .fullscreen-icon:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Skill.html">Skills</a></li>
+                <li><a href="Projects.html">Projects</a></li>
+                <li><a href="FoodKing.html" class="active">View Details</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="image-page">
+        <h1>🍔 FoodKing Project Overview</h1>
+        <section class="image-wrapper">
+            <div class="image-card">
+                <h3>Home Page</h3>
+                <img src="photos/homePage SS.png" alt="FoodKing Home Page">
+                <button class="fullscreen-icon" aria-label="Full screen">
+                    <i data-feather="maximize-2"></i>
+                </button>
+            </div>
+            <div class="image-card">
+                <h3>Menu Page</h3>
+                <img src="photos/Menu SS.png" alt="FoodKing Menu Page">
+                <button class="fullscreen-icon" aria-label="Full screen">
+                    <i data-feather="maximize-2"></i>
+                </button>
+            </div>
+            <div class="image-card">
+                <h3>Checkout Page</h3>
+                <img src="photos/Cart SS.png" alt="FoodKing Home Page">
+                <button class="fullscreen-icon" aria-label="Full screen">
+                    <i data-feather="maximize-2"></i>
+                </button>
+            </div>
+            <div class="image-card">
+                <h3>Notify</h3>
+                <img src="photos/Notify SS.png" alt="FoodKing Home Page">
+                <button class="fullscreen-icon" aria-label="Full screen">
+                    <i data-feather="maximize-2"></i>
+                </button>
+            </div>
+        </section>
+
+    </div>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>feather.replace()</script>
+
+
+    <script>
+        // Make each image go full‑screen on click
+        document.querySelectorAll('.image-card').forEach(card => {
+            const img = card.querySelector('img');
+            const btn = card.querySelector('.fullscreen-icon');
+
+            function toggleFS() {
+                if (document.fullscreenElement) {
+                    document.exitFullscreen();
+                } else {
+                    img.requestFullscreen();
+                }
+            }
+
+            img.addEventListener('click', toggleFS);
+            btn.addEventListener('click', toggleFS);
+        });
+
+    </script>
+</body>
+
+</html>
