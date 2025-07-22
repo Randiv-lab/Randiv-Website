@@ -374,3 +374,90 @@ main {
     border-radius: var(--radius);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+/* 1) Make images/cards fluid (remove fixed heights!) */
+.image-card,
+.project-card,
+.skill {
+  height: auto;     /* let content size itself */
+}
+
+/* 2) Stack nav items for small screens */
+@media (max-width: 768px) {
+  header nav ul {
+    flex-direction: column;
+    gap: 0;
+  }
+  header nav li + li {
+    margin: 0;       /* remove desktop gaps */
+  }
+  header nav a {
+    padding: 1rem;
+    text-align: center;
+    border-radius: 0; /* full-width buttons, no corners */
+    width: 100%;
+    display: block;
+  }
+}
+
+/* 3) Main content padding shrinks on mobile */
+@media (max-width: 600px) {
+  main, .image-page, .projects-page {
+    padding: 1rem;   /* less side padding */
+  }
+}
+
+/* 4) Projects grid → single column on small */
+@media (max-width: 600px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 5) Skill cards → single column */
+@media (max-width: 480px) {
+  .skills-list {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .skill {
+    flex: none;
+    width: 100%;
+  }
+}
+
+/* 6) FoodKing image‑wrapper already stacks on narrow, but tighten gaps */
+@media (max-width: 768px) {
+  .image-wrapper {
+    gap: 1rem;
+  }
+  .image-card {
+    margin: 0;      /* remove any unexpected side margins */
+  }
+}
+
+/* 7) About page: make photo & text stack neatly */
+@media (max-width: 768px) {
+  .about {
+    flex-direction: column;
+    text-align: center;
+  }
+  .paragraph {
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+  .photo {
+    margin: 0 auto;
+    width: 50%;
+  }
+}
+
+/* 8) Ensure headers & panels don’t overflow */
+.panel, .projects-page, .image-page {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 9) Increase tap targets */
+button, .link-item, .social-btn {
+  min-height: 44px;   /* Apple’s recommended touch size */
+}
