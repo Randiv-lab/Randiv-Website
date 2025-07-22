@@ -437,18 +437,37 @@ main {
 
 /* 7) About page: make photo & text stack neatly */
 @media (max-width: 768px) {
+ /* Mobile tweaks for .about (index.html) */
+@media (max-width: 768px) {
   .about {
     flex-direction: column;
     text-align: center;
+    padding: 0 1rem;
   }
-  .paragraph {
-    margin-left: 0;
-    margin-top: 1rem;
-  }
+
   .photo {
-    margin: 0 auto;
+    /* let the photo grow to ~60% of the viewport */
+    width: 60%;
+    max-width: 300px;     /* optional cap */
+    height: auto;
+    margin: 0 auto 1rem;  /* center + some bottom space */
+    flex-shrink: 0;       /* keep aspect ratio */
+  }
+
+  .photo img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .paragraph {
+    /* reset the desktop min‑width and left margin */
+    min-width: 0;
+    margin-left: 0;
     width: 100%;
   }
+}
+
 }
 
 /* 8) Ensure headers & panels don’t overflow */
